@@ -1,20 +1,27 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/reveal";
 
 export function CTA() {
   return (
-    <section className="bg-paper-0">
+    <section className="bg-paper-50">
       <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-24">
-        <div className="rounded-2xl border border-line-200 bg-remedy-100 px-6 py-16 text-center md:px-14 md:py-20">
-          <h2 className="mx-auto max-w-2xl font-serif text-3xl font-semibold text-ink-900 md:text-4xl">
-            See RemedyEngine run your clinic in a 20-minute demo
+        <Reveal className="rounded-2xl border border-line-200 bg-remedy-100 px-6 py-16 text-center md:px-14 md:py-20">
+          <span className="font-data text-xs uppercase tracking-wide text-remedy-600">
+            20 minutes · No commitment
+          </span>
+          <h2 className="mx-auto mt-3 max-w-2xl font-serif text-3xl font-semibold text-ink-900 md:text-4xl">
+            See RemedyEngine run your clinic
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink-700">
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink-700 md:text-lg">
             Watch a WhatsApp message become a booked, briefed, billed, and
             followed-up patient — automatically.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
               size="lg"
+              render={<Link href="/book-demo" />}
+              nativeButton={false}
               className="w-full bg-remedy-600 text-white hover:bg-remedy-600/90 sm:w-auto"
             >
               Book a demo
@@ -27,7 +34,7 @@ export function CTA() {
               Talk to sales
             </Button>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

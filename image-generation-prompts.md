@@ -210,6 +210,69 @@ message", simple enough to be legible at 32x32px. No gradients, no 3D, no
 photorealism, no text or lettering. 512x512px, flat vector icon style.
 ```
 
+## 14. Hero banner — modern product shot: chat → clinic dashboard — `public/hero-banner.png`
+
+Wide 16:9 (~1920×1080). This is the main hero image — a **modern, high-fidelity
+product mockup** (device frames with realistic depth), NOT a flat cartoon.
+
+```
+A modern, high-fidelity SaaS product hero image for a healthcare platform called
+RemedyEngine. Center-right: a clean desktop browser window shown in a minimal,
+realistic frame, displaying a polished clinic dashboard — a slim left sidebar,
+a top row of four stat cards, a weekly appointment calendar with a few filled
+green slots, and one soft line/area chart in clinical green. Overlapping the
+lower-left corner and floating in front of it: a modern smartphone with a flat
+minimal frame and rounded corners, showing a clean messaging-app conversation —
+rounded chat bubbles (an assistant reply in clinical green, a patient message in
+white) confirming an appointment. A single thin, subtle connector line links the
+phone's chat bubble to a highlighted slot on the dashboard calendar, showing the
+message becoming a booking.
+
+Style: modern, crisp, premium product shot with realistic SOFT drop shadows
+under each device for depth and a gentle sense of layering — but keep the UI
+itself FLAT and clean (no heavy gradients, no glassmorphism, no neon, no 3D
+bevels). Calm, trustworthy, healthcare-appropriate. Wide 16:9 with generous
+negative space around the devices.
+
+Use realistic but SHORT, legible UI labels only where natural — e.g. "Today",
+"Confirmed", "10:30 AM", "Appointments", "This week" — and keep all body text as
+clean neutral placeholder lines (not lorem ipsum, not gibberish). No people, no
+photographs, no distress imagery. NO WhatsApp logo or any real app branding —
+use a generic messaging interface.
+
+Background: solid sage-grey paper #F1F3EE (match exactly, so it blends into a web
+page) with a very faint soft green glow behind the devices. Strictly limit all
+colors to: #2E6B54, #3F8B6E, #DCEAE1, #16231F, #33423C, #F1F3EE, #D98A2B,
+#D9DED6, and white. Reject teal/blue medical-stock looks and dark neon
+AI-product looks.
+```
+
+*If the model garbles the UI labels, regenerate asking for abstract placeholder
+line-blocks instead of words — you can composite real copy on top later.*
+
+## 15. Clinic dashboard mockup — `public/dashboard-mockup.png`
+
+Straight-on, ~1600×1000 (16:10).
+
+```
+A clean flat illustration of a clinic management dashboard UI viewed straight-on
+(not angled). White (#FFFFFF) app surface, thin light-grey border (#D9DED6),
+12px rounded corners. Layout: a slim left sidebar with five simple grey nav-icon
+shapes; a main area with a top row of four small stat tiles (grey placeholder
+blocks, each with a tiny green #2E6B54 or amber #D98A2B accent), a weekly
+appointment calendar grid with a few green filled slots, and one line/area chart
+in muted clinical green with an amber highlight. Use only abstract grey
+placeholder line-blocks for all text and numbers — nothing legible. Flat 2D
+vector, no photorealism, no gradients, no 3D, one soft ambient shadow behind the
+panel. Sage-grey (#F1F3EE) background, generous padding, 16:10. Strictly limit
+colors to #2E6B54, #3F8B6E, #DCEAE1, #16231F, #F1F3EE, #D98A2B, #D9DED6, white.
+Reject teal/blue medical-stock and neon dark-dashboard AI looks.
+```
+
+> After generating #14 and #15, save them as `hero-banner.png` and
+> `dashboard-mockup.png` in `public/images/` and tell me — I'll convert to WebP
+> and wire them into the hero and the Owners tab.
+
 ---
 
 ## After generating

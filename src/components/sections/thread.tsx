@@ -1,4 +1,5 @@
 import { CheckCircle2, FileText, FlaskConical, Stethoscope } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 
 type Step = {
   time: string;
@@ -75,10 +76,11 @@ const STEPS: Step[] = [
 export function Thread() {
   return (
     <div className="relative">
-      <ol className="relative flex flex-col gap-10">
+      <div className="relative flex flex-col gap-10">
         {STEPS.map((step, i) => (
-          <li
+          <Reveal
             key={i}
+            delay={i * 100}
             className="relative grid grid-cols-1 items-start gap-4 md:grid-cols-[1fr_auto_1fr] md:gap-6"
           >
             {/* Chat bubbles */}
@@ -133,9 +135,9 @@ export function Thread() {
                 </div>
               </div>
             </div>
-          </li>
+          </Reveal>
         ))}
-      </ol>
+      </div>
     </div>
   );
 }

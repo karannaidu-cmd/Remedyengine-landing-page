@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { MessageSquare, Sparkles, Layers, TrendingUp, ShieldCheck } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 
 const DIFFERENTIATORS = [
   {
@@ -9,7 +11,7 @@ const DIFFERENTIATORS = [
   {
     icon: Sparkles,
     title: "Real AI, not just menus",
-    desc: "Natural-language understanding, triage, intake, specialist matching, and doctor briefs — not a rigid button bot.",
+    desc: "Natural-language triage, intake, matching, and doctor briefs — not a rigid button bot.",
   },
   {
     icon: Layers,
@@ -55,30 +57,57 @@ export function Differentiators() {
   return (
     <section className="bg-paper-0">
       <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="font-data text-xs uppercase tracking-wide text-remedy-600">
-            Why RemedyEngine wins
-          </span>
-          <h2 className="mt-3 font-serif text-3xl font-semibold text-ink-900 md:text-4xl">
-            Built differently, on purpose
-          </h2>
-        </div>
-
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
-          {DIFFERENTIATORS.map((d) => (
-            <div key={d.title} className="rounded-xl border border-line-200 bg-paper-50 p-6">
-              <d.icon className="text-remedy-600" size={22} />
-              <h3 className="mt-4 text-base font-semibold text-ink-900">
-                {d.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-700">
-                {d.desc}
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_420px] lg:gap-16">
+          <div>
+            <Reveal>
+              <span className="font-data text-xs uppercase tracking-wide text-remedy-600">
+                Why RemedyEngine wins
+              </span>
+              <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-ink-900 md:text-4xl">
+                Built differently, on purpose
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-ink-700 md:text-lg">
+                Five early decisions that make the engine hard to copy — and
+                easy to adopt.
               </p>
+            </Reveal>
+
+            <div className="mt-8 space-y-3">
+              {DIFFERENTIATORS.map((d, i) => (
+                <Reveal
+                  key={d.title}
+                  delay={i * 70}
+                  className="flex items-start gap-4 rounded-xl border border-line-200 bg-paper-50 p-4"
+                >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-remedy-100 text-remedy-600">
+                    <d.icon size={20} />
+                  </span>
+                  <div>
+                    <h3 className="text-base font-semibold text-ink-900">
+                      {d.title}
+                    </h3>
+                    <p className="mt-0.5 text-sm leading-relaxed text-ink-700">
+                      {d.desc}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <Reveal delay={150} className="hidden lg:block">
+            <Image
+              src="/images/engine-concept.webp"
+              alt="The RemedyEngine core: one engine connecting patient chat, clinic dashboards, marketing, and reporting"
+              width={1024}
+              height={1024}
+              sizes="420px"
+              className="h-auto w-full"
+            />
+          </Reveal>
         </div>
 
-        <div className="mt-24 rounded-2xl bg-ink-900 px-6 py-16 md:px-14 md:py-20">
+        <Reveal className="mt-24 rounded-2xl bg-ink-900 px-6 py-16 md:px-14 md:py-20">
           <div className="mx-auto max-w-2xl text-center">
             <span className="font-data text-xs uppercase tracking-wide text-remedy-500">
               The ROI story
@@ -89,8 +118,8 @@ export function Differentiators() {
           </div>
 
           <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {LEVERS.map((l) => (
-              <div key={l.stat}>
+            {LEVERS.map((l, i) => (
+              <Reveal key={l.stat} delay={i * 80}>
                 <span className="font-data text-3xl text-remedy-500">
                   {l.stat}
                 </span>
@@ -100,7 +129,7 @@ export function Differentiators() {
                 <p className="mt-2 text-sm leading-relaxed text-paper-50/70">
                   {l.desc}
                 </p>
-              </div>
+              </Reveal>
             ))}
           </div>
 
@@ -112,7 +141,7 @@ export function Differentiators() {
           <p className="mx-auto mt-4 max-w-2xl text-center font-data text-xs uppercase tracking-wide text-paper-50/50">
             Illustrative targets, validated per customer — not guarantees
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

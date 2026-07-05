@@ -1,23 +1,45 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 const LINKS = [
-  { href: "#features", label: "Features" },
-  { href: "#workflow", label: "Workflow" },
-  { href: "#stakeholders", label: "Who it's for" },
+  { href: "/#features", label: "Features" },
+  { href: "/#workflow", label: "Workflow" },
+  { href: "/#stakeholders", label: "Who it's for" },
 ];
 
 export function Nav() {
-  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-transparent bg-paper-50/90 backdrop-blur-sm supports-[backdrop-filter]:bg-paper-50/70 data-[scrolled=true]:border-line-200">
+    <header
+      className={cn(
+        "sticky top-0 z-50 border-b bg-paper-50/90 backdrop-blur-sm transition-colors supports-[backdrop-filter]:bg-paper-50/70",
+        scrolled ? "border-line-200" : "border-transparent"
+      )}
+    >
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-4 md:px-8">
-        <Link href="#" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-remedy-600 font-serif text-sm font-bold tracking-tight text-white">
             RE
           </span>
@@ -39,48 +61,60 @@ export function Nav() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Button variant="ghost" className="text-ink-900 hover:bg-remedy-100">
-            Sign in
-          </Button>
-          <Button className="bg-remedy-600 text-white hover:bg-remedy-600/90">
+          <Button
+            render={<Link href="/book-demo" />}
+            nativeButton={false}
+            className="bg-remedy-600 text-white hover:bg-remedy-600/90"
+          >
             Book a demo
           </Button>
         </div>
 
-        <button
-          type="button"
-          aria-label="Toggle menu"
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-ink-900 md:hidden"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
+        <Sheet swipeDirection="right">
+          <SheetTrigger
+            aria-label="Open menu"
+            className="flex h-10 w-10 items-center justify-center text-ink-900 md:hidden"
+          >
+            <Menu size={22} />
+          </SheetTrigger>
+          <SheetContent side="right" className="p-0">
+            <SheetHeader className="border-b border-line-200 px-5 py-5 pr-14">
+              <div className="flex items-center gap-2">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-remedy-600 font-serif text-sm font-bold tracking-tight text-white">
+                  RE
+                </span>
+                <SheetTitle>RemedyEngine</SheetTitle>
+              </div>
+              <SheetDescription className="sr-only">
+                Site navigation
+              </SheetDescription>
+            </SheetHeader>
 
-      {open && (
-        <div className="border-t border-line-200 bg-paper-0 px-5 py-4 md:hidden">
-          <nav className="flex flex-col gap-4">
-            {LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-ink-700"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-            <div className="mt-2 flex flex-col gap-2">
-              <Button variant="outline" className="border-ink-900 text-ink-900">
-                Sign in
-              </Button>
-              <Button className="bg-remedy-600 text-white hover:bg-remedy-600/90">
-                Book a demo
-              </Button>
-            </div>
-          </nav>
-        </div>
-      )}
+            <nav className="flex flex-col gap-1 px-5 py-5">
+              {LINKS.map((link) => (
+                <SheetClose
+                  key={link.href}
+                  render={<a href={link.href} />}
+                  nativeButton={false}
+                  className="rounded-lg px-3 py-3 text-base font-medium text-ink-900 transition-colors hover:bg-remedy-100 hover:text-remedy-600 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+                >
+                  {link.label}
+                </SheetClose>
+              ))}
+
+              <div className="mt-5 border-t border-line-200 pt-5">
+                <SheetClose
+                  render={<Link href="/book-demo" />}
+                  nativeButton={false}
+                  className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-remedy-600 px-4 text-sm font-medium text-white transition-colors hover:bg-remedy-600/90 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+                >
+                  Book a demo
+                </SheetClose>
+              </div>
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
     </header>
   );
 }

@@ -7,56 +7,59 @@ import {
   CreditCard,
   BarChart3,
   Building2,
+  Check,
 } from "lucide-react";
+import { Reveal } from "@/components/reveal";
+import { SectionHeader } from "@/components/section-header";
 
 const MODULES = [
   {
     icon: CalendarClock,
     title: "Booking & Scheduling",
-    desc: "Smart slot management with conflict-free, real-time availability; walk-ins, rescheduling, and video consultations built in.",
-    benefit: "No double-bookings, full calendar visibility, tele-consults without a separate tool.",
+    desc: "Conflict-free, real-time slots with walk-ins, rescheduling, and video consultations built in.",
+    benefit: "No double-bookings, full calendar visibility.",
   },
   {
     icon: FileSignature,
     title: "Digital Prescriptions",
-    desc: "Doctors issue branded, e-signed prescriptions delivered to the patient on WhatsApp — automatically creating a pharmacy dispensing request and lab test orders.",
-    benefit: "No illegible paper, no lost scripts, clean handoff to pharmacy and lab.",
+    desc: "Branded, e-signed prescriptions delivered on WhatsApp — auto-creating pharmacy and lab orders.",
+    benefit: "No illegible paper, no lost scripts.",
   },
   {
     icon: Pill,
     title: "Pharmacy Management",
-    desc: "Medicine catalog, batch & expiry tracking, low-stock alerts, and a dispensing inbox that receives requests straight from prescriptions.",
-    benefit: "No stockouts, no expired-stock losses, a paper-free dispense flow.",
+    desc: "Medicine catalog, batch and expiry tracking, low-stock alerts, and a dispensing inbox fed by prescriptions.",
+    benefit: "No stockouts, no expiry losses.",
   },
   {
     icon: FlaskConical,
     title: "Lab & Diagnostics",
-    desc: "Lab test catalog and end-to-end booking lifecycle — ordered, sample collected, in progress, report ready, delivered on WhatsApp.",
-    benefit: "Patients stop asking “where's my report?”; the lab runs an organized worklist.",
+    desc: "A full test lifecycle — ordered, collected, in progress, ready — with reports delivered on WhatsApp.",
+    benefit: "No more “where's my report?”.",
   },
   {
     icon: Users,
     title: "Patient CRM",
-    desc: "Unified patient profiles, full interaction timeline, lead scoring, and segmentation.",
-    benefit: "Every patient's history in one place; follow-ups target the right people.",
+    desc: "Unified profiles, a full interaction timeline, lead scoring, and segmentation.",
+    benefit: "Every patient's history in one place.",
   },
   {
     icon: CreditCard,
-    title: "Payments & Revenue Tracking",
-    desc: "Track consultation fees and additional charges; see collected vs. outstanding at a glance.",
-    benefit: "No revenue leakage; the front desk always knows who still owes what.",
+    title: "Payments & Revenue",
+    desc: "Consultation fees and extra charges tracked; collected vs. outstanding at a glance.",
+    benefit: "No revenue leakage.",
   },
   {
     icon: BarChart3,
     title: "Analytics & Reports",
-    desc: "Revenue analytics, appointment and patient flow, payment-collection tracking, plus dedicated lab and pharmacy reports.",
-    benefit: "Owners get the numbers to make decisions, without spreadsheets.",
+    desc: "Revenue, appointment flow, collections, plus dedicated lab and pharmacy reports.",
+    benefit: "Decisions from numbers, not memory.",
   },
   {
     icon: Building2,
     title: "Multi-Clinic & Roles",
-    desc: "Run multiple branches under one account, with role-based access for Admin, Doctor, Receptionist, Pharmacist, and Lab Technician.",
-    benefit: "Scale from one clinic to a chain, with the right controls for every team member.",
+    desc: "Multiple branches under one account, with role-based access for every team member.",
+    benefit: "One clinic or a chain — same engine.",
   },
 ];
 
@@ -64,36 +67,35 @@ export function Workflow() {
   return (
     <section id="workflow" className="bg-paper-0">
       <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="font-data text-xs uppercase tracking-wide text-remedy-600">
-            Connected workflow
-          </span>
-          <h2 className="mt-3 font-serif text-3xl font-semibold text-ink-900 md:text-4xl">
-            One engine, not five tools stitched together
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-ink-700">
-            Booking, clinical, pharmacy, lab, CRM, payments, and analytics —
-            all in one system, with paper forms and manual processes digitized
-            end to end.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Connected workflow"
+          title="One engine, not five tools stitched together"
+          sub="Booking, clinical, pharmacy, lab, CRM, payments, and analytics in one system — paper forms and manual processes digitized end to end."
+        />
 
-        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line-200 bg-line-200 sm:grid-cols-2 lg:grid-cols-4">
-          {MODULES.map((m) => (
-            <div key={m.title} className="flex flex-col bg-paper-0 p-6">
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {MODULES.map((m, i) => (
+            <Reveal
+              key={m.title}
+              delay={(i % 4) * 70}
+              className="flex h-full flex-col rounded-xl border border-line-200 bg-paper-50 p-6"
+            >
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-remedy-100 text-remedy-600">
                 <m.icon size={20} />
               </span>
               <h3 className="mt-4 text-base font-semibold text-ink-900">
                 {m.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+              <p className="mt-2 pb-4 text-sm leading-relaxed text-ink-700">
                 {m.desc}
               </p>
-              <p className="mt-3 text-sm font-medium text-remedy-600">
-                {m.benefit}
-              </p>
-            </div>
+              <div className="mt-auto flex items-center gap-2 border-t border-line-200 pt-4">
+                <Check size={15} className="shrink-0 text-remedy-600" />
+                <span className="text-sm font-medium text-ink-900">
+                  {m.benefit}
+                </span>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

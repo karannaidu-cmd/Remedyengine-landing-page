@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Serif_4, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { siteConfig } from "@/lib/seo";
 import "./globals.css";
 
 const sourceSerif = Source_Serif_4({
@@ -21,36 +22,72 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://remedyengine.com"),
-  title: "RemedyEngine — The engine that runs your clinic",
-  description:
-    "RemedyEngine automates your whole clinic — WhatsApp booking and reminders, doctor workflows, pharmacy, lab, payments, marketing, and live reports. Paper and manual work goes digital, so your clinic runs smoothly with a smaller team.",
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: [...siteConfig.keywords],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "Healthcare software",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? {
+        google: process.env.GOOGLE_SITE_VERIFICATION,
+      }
+    : undefined,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
-    icon: "/images/favicon-mark.png",
-    apple: "/images/favicon-mark.png",
+    icon: "/images/favicon-mark.webp",
+    apple: "/images/favicon-mark.webp",
   },
   openGraph: {
-    title: "RemedyEngine — The engine that runs your clinic",
-    description:
-      "Automate the front desk, run the whole clinic, grow with marketing, and monitor everything — one connected engine, WhatsApp-first.",
-    url: "https://remedyengine.com",
-    siteName: "RemedyEngine",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: "/",
+    siteName: siteConfig.name,
     images: [
       {
-        url: "/images/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "RemedyEngine — a WhatsApp message becoming a clinical record",
+        url: siteConfig.ogImage.url,
+        width: siteConfig.ogImage.width,
+        height: siteConfig.ogImage.height,
+        alt: siteConfig.ogImage.alt,
       },
     ],
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "RemedyEngine — The engine that runs your clinic",
-    description:
-      "Automate the front desk, run the whole clinic, grow with marketing, and monitor everything — one connected engine.",
-    images: ["/images/og-image.png"],
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImage.url,
+        alt: siteConfig.ogImage.alt,
+      },
+    ],
   },
 };
 
