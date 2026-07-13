@@ -4,6 +4,12 @@ export const siteConfig = {
   title: "RemedyEngine | WhatsApp Clinic Automation Software",
   description:
     "RemedyEngine automates clinic booking, reminders, triage, doctor briefs, pharmacy, lab, payments, marketing, and reports through WhatsApp.",
+  logo: {
+    url: "/images/remedyengine-logo.png",
+    width: 1449,
+    height: 281,
+    alt: "RemedyEngine",
+  },
   ogImage: {
     url: "/images/og-image.webp",
     width: 1424,

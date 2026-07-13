@@ -18,7 +18,12 @@ const jsonLd = {
       "@id": absoluteUrl("/#organization"),
       name: siteConfig.name,
       url: siteConfig.url,
-      logo: absoluteUrl("/images/favicon-mark.webp"),
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl(siteConfig.logo.url),
+        width: siteConfig.logo.width,
+        height: siteConfig.logo.height,
+      },
       description: siteConfig.description,
     },
     {

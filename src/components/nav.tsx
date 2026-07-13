@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -39,13 +40,8 @@ export function Nav() {
       )}
     >
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-4 md:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-remedy-600 font-serif text-sm font-bold tracking-tight text-white">
-            RE
-          </span>
-          <span className="font-serif text-lg font-semibold text-ink-900">
-            RemedyEngine
-          </span>
+        <Link href="/" className="flex shrink-0 items-center">
+          <BrandLogo priority imageClassName="h-9 sm:h-10" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -79,11 +75,9 @@ export function Nav() {
           </SheetTrigger>
           <SheetContent side="right" className="p-0">
             <SheetHeader className="border-b border-line-200 px-5 py-5 pr-14">
-              <div className="flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-remedy-600 font-serif text-sm font-bold tracking-tight text-white">
-                  RE
-                </span>
-                <SheetTitle>RemedyEngine</SheetTitle>
+              <div className="flex items-center">
+                <BrandLogo imageClassName="h-9" sizes="186px" />
+                <SheetTitle className="sr-only">RemedyEngine</SheetTitle>
               </div>
               <SheetDescription className="sr-only">
                 Site navigation

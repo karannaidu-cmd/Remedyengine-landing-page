@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 
 const COLUMNS = [
   {
@@ -21,13 +22,8 @@ export function Footer() {
       <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
-            <Link href="#" className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-remedy-600 font-serif text-sm font-bold tracking-tight text-white">
-                RE
-              </span>
-              <span className="font-serif text-lg font-semibold text-ink-900">
-                RemedyEngine
-              </span>
+            <Link href="/" className="inline-flex items-center">
+              <BrandLogo imageClassName="h-10" sizes="206px" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-700">
               The engine that runs your clinic. WhatsApp automation, clinical
