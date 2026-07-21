@@ -1,88 +1,47 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, ArrowLeft } from "lucide-react";
+import { Check, Mail, MessageCircle } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { Reveal } from "@/components/reveal";
 import { BookDemoForm } from "@/components/book-demo-form";
-import { absoluteUrl, siteConfig, stringifyJsonLd } from "@/lib/seo";
+import {
+  pageMetadata,
+  breadcrumbJsonLd,
+  webPageJsonLd,
+  stringifyJsonLd,
+} from "@/lib/seo";
+import { contact, mailtoHref, whatsappHref } from "@/lib/contact";
 
 const demoDescription =
-  "See how RemedyEngine turns a WhatsApp enquiry into a booked, briefed, billed, and followed-up patient in a 20-minute clinic automation demo.";
+  "See how RemedyEngine's connected engines turn a patient enquiry into a booked, briefed, prescribed, and followed-up visit in a 20-minute demo.";
 
-export const metadata: Metadata = {
-  title: "Book a 20-minute clinic automation demo",
+export const metadata: Metadata = pageMetadata({
+  title: "Book a 20-minute demo",
   description: demoDescription,
-  alternates: {
-    canonical: "/book-demo",
-  },
-  openGraph: {
-    title: "Book a 20-minute RemedyEngine demo",
-    description: demoDescription,
-    url: "/book-demo",
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.ogImage.url,
-        width: siteConfig.ogImage.width,
-        height: siteConfig.ogImage.height,
-        alt: siteConfig.ogImage.alt,
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Book a 20-minute RemedyEngine demo",
-    description: demoDescription,
-    images: [
-      {
-        url: siteConfig.ogImage.url,
-        alt: siteConfig.ogImage.alt,
-      },
-    ],
-  },
-};
+  path: "/book-demo",
+});
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": absoluteUrl("/book-demo#webpage"),
+    webPageJsonLd({
       name: "Book a 20-minute RemedyEngine demo",
-      url: absoluteUrl("/book-demo"),
+      path: "/book-demo",
       description: demoDescription,
-      isPartOf: {
-        "@id": absoluteUrl("/#website"),
-      },
-      inLanguage: "en",
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": absoluteUrl("/book-demo#breadcrumb"),
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: siteConfig.url,
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Book a demo",
-          item: absoluteUrl("/book-demo"),
-        },
-      ],
-    },
+    }),
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Book a demo", path: "/book-demo" },
+    ]),
   ],
 };
 
 const WHAT_YOU_SEE = [
-  "How the AI books, triages, and answers patients on WhatsApp",
-  "The doctor, pharmacy, and lab dashboards in action",
-  "Your no-show reminders, follow-ups, and win-back automations",
+  "Every patient channel — WhatsApp, Instagram, Facebook, website, walk-in, AI calling — landing in one booking engine",
+  "The AI Patient History Brief and consultation workflow, doctor's-eye view",
+  "Prescriptions, lab and pharmacy handing off to each other automatically",
+  "The clinic command centre — appointments, revenue, and alerts in real time",
 ];
 
 export default function BookDemoPage() {
@@ -93,17 +52,11 @@ export default function BookDemoPage() {
         dangerouslySetInnerHTML={{ __html: stringifyJsonLd(jsonLd) }}
       />
       <Nav />
-      <main className="flex-1 bg-paper-50">
-        <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:py-24">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-700 hover:text-remedy-600"
-          >
-            <ArrowLeft size={16} /> Back to home
-          </Link>
-
-          <div className="mt-8 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
+      <main className="relative flex-1 overflow-hidden bg-paper-50">
+        <span aria-hidden className="pointer-events-none absolute inset-0 bg-ambient-highlight" />
+        <div className="relative mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:py-24">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+            <Reveal>
               <span className="font-data text-xs uppercase tracking-wide text-remedy-600">
                 Book a demo
               </span>
@@ -111,21 +64,23 @@ export default function BookDemoPage() {
                 See RemedyEngine run your clinic.
               </h1>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-ink-700">
-                In 20 minutes, watch a WhatsApp message become a booked,
-                briefed, billed, and followed-up patient — mapped to your
-                clinic&apos;s own workflow.
+                In 20 minutes, watch a patient enquiry become a booked,
+                briefed, prescribed, and followed-up visit — mapped to your
+                clinic&apos;s own workflow across every connected engine.
               </p>
 
               <ul className="mt-8 space-y-3">
-                {WHAT_YOU_SEE.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-remedy-100 text-remedy-600">
-                      <Check size={13} />
-                    </span>
-                    <span className="text-sm leading-relaxed text-ink-700">
-                      {item}
-                    </span>
-                  </li>
+                {WHAT_YOU_SEE.map((item, i) => (
+                  <Reveal key={item} delay={i * 60}>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-remedy-100 text-remedy-600">
+                        <Check size={13} />
+                      </span>
+                      <span className="text-sm leading-relaxed text-ink-700">
+                        {item}
+                      </span>
+                    </li>
+                  </Reveal>
                 ))}
               </ul>
 
@@ -139,11 +94,35 @@ export default function BookDemoPage() {
                   </span>
                 ))}
               </div>
-            </div>
 
-            <div className="lg:pl-4">
+              <div className="mt-8 flex flex-wrap gap-4 border-t border-line-200 pt-6">
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-medium text-ink-700 hover:text-remedy-600"
+                >
+                  <MessageCircle size={16} /> {contact.phoneDisplay}
+                </a>
+                <a
+                  href={mailtoHref}
+                  className="flex items-center gap-2 text-sm font-medium text-ink-700 hover:text-remedy-600"
+                >
+                  <Mail size={16} /> {contact.email}
+                </a>
+              </div>
+            </Reveal>
+
+            <Reveal delay={100} className="lg:pl-4">
               <BookDemoForm />
-            </div>
+              <p className="mt-4 text-center text-xs text-ink-700">
+                Prefer to talk first?{" "}
+                <Link href="/contact" className="font-medium text-remedy-600 hover:underline">
+                  Contact us directly
+                </Link>
+                .
+              </p>
+            </Reveal>
           </div>
         </div>
       </main>

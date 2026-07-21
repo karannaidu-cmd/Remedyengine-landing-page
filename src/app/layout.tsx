@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
-import { Source_Serif_4, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Sora, Inter, IBM_Plex_Mono } from "next/font/google";
 import { siteConfig } from "@/lib/seo";
 import "./globals.css";
 
-const sourceSerif = Source_Serif_4({
-  variable: "--font-serif",
+const sora = Sora({
+  variable: "--font-heading",
   subsets: ["latin"],
   weight: ["600", "700"],
 });
 
-const plexSans = IBM_Plex_Sans({
+const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -20,6 +20,14 @@ const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
 });
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#075e4c" },
+    { media: "(prefers-color-scheme: dark)", color: "#062f29" },
+  ],
+  colorScheme: "light",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -99,7 +107,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sourceSerif.variable} ${plexSans.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${sora.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper-50 text-ink-900 font-sans">
         {children}

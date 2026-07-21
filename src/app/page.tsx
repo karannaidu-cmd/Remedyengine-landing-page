@@ -1,14 +1,23 @@
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { Hero } from "@/components/sections/hero";
-import { Problem } from "@/components/sections/problem";
-import { AIFeatures } from "@/components/sections/ai-features";
-import { Automations } from "@/components/sections/automations";
-import { Workflow } from "@/components/sections/workflow";
-import { Stakeholders } from "@/components/sections/stakeholders";
-import { Differentiators } from "@/components/sections/differentiators";
-import { CTA } from "@/components/sections/cta";
+import { HomeHero } from "@/components/home/hero";
+import { EngineEcosystem } from "@/components/home/engine-ecosystem";
+import {
+  OmnichannelEntry,
+  BeforeAfter,
+  AiBriefSection,
+  ConnectedJourney,
+  CommandCentre,
+  BuiltForEveryClinic,
+  OperationalBenefits,
+  WhyDifferent,
+  FreeTrialSection,
+  FaqSection,
+} from "@/components/home/sections";
+import { CTABand } from "@/components/site/cta-band";
 import { absoluteUrl, siteConfig, stringifyJsonLd } from "@/lib/seo";
+import { contact } from "@/lib/contact";
+import { faqs } from "@/lib/faq";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -25,15 +34,20 @@ const jsonLd = {
         height: siteConfig.logo.height,
       },
       description: siteConfig.description,
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: contact.email,
+        telephone: `+${contact.phoneDigits}`,
+        availableLanguage: ["en"],
+      },
     },
     {
       "@type": "WebSite",
       "@id": absoluteUrl("/#website"),
       name: siteConfig.name,
       url: siteConfig.url,
-      publisher: {
-        "@id": absoluteUrl("/#organization"),
-      },
+      publisher: { "@id": absoluteUrl("/#organization") },
       inLanguage: "en",
     },
     {
@@ -42,12 +56,8 @@ const jsonLd = {
       name: siteConfig.title,
       url: siteConfig.url,
       description: siteConfig.description,
-      isPartOf: {
-        "@id": absoluteUrl("/#website"),
-      },
-      about: {
-        "@id": absoluteUrl("/#software"),
-      },
+      isPartOf: { "@id": absoluteUrl("/#website") },
+      about: { "@id": absoluteUrl("/#software") },
       primaryImageOfPage: absoluteUrl(siteConfig.ogImage.url),
       inLanguage: "en",
     },
@@ -66,12 +76,12 @@ const jsonLd = {
           "Clinic owners, doctors, front-desk teams, pharmacies, labs, and multi-branch clinic chains",
       },
       featureList: [
-        "AI WhatsApp booking and patient intake",
-        "Automated appointment reminders and no-show re-engagement",
-        "AI triage, specialist matching, and doctor briefs",
-        "Digital prescriptions with pharmacy and lab handoff",
-        "Patient CRM, payments, marketing, and live reporting",
-        "Multi-branch clinic workflows with role-based access",
+        "Omnichannel booking across WhatsApp, Instagram, Facebook, website, walk-in and AI calls",
+        "Automated WhatsApp conversation and AI calling",
+        "AI Patient History Brief for doctors",
+        "Patient records, consultation and digital prescriptions",
+        "Laboratory, pharmacy, billing and queue management",
+        "Follow-up and retention, insights, role-based access and global search",
       ],
       offers: {
         "@type": "Offer",
@@ -79,6 +89,15 @@ const jsonLd = {
         availability: "https://schema.org/InStock",
         description: "Custom pricing shared after a RemedyEngine demo",
       },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": absoluteUrl("/#faq"),
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
     },
   ],
 };
@@ -92,14 +111,19 @@ export default function Home() {
       />
       <Nav />
       <main className="flex-1">
-        <Hero />
-        <Problem />
-        <AIFeatures />
-        <Automations />
-        <Workflow />
-        <Stakeholders />
-        <Differentiators />
-        <CTA />
+        <HomeHero />
+        <OmnichannelEntry />
+        <BeforeAfter />
+        <EngineEcosystem />
+        <AiBriefSection />
+        <ConnectedJourney />
+        <CommandCentre />
+        <BuiltForEveryClinic />
+        <OperationalBenefits />
+        <WhyDifferent />
+        <FreeTrialSection />
+        <FaqSection />
+        <CTABand />
       </main>
       <Footer />
     </>

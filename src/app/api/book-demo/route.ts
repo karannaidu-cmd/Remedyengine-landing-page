@@ -59,14 +59,14 @@ Phone:     ${phone}
 Email:     ${email}`;
 
   const html = `
-    <div style="font-family:Arial,Helvetica,sans-serif;color:#16231F">
-      <h2 style="color:#2E6B54;margin:0 0 12px">New demo request</h2>
+    <div style="font-family:Arial,Helvetica,sans-serif;color:#0B1F33">
+      <h2 style="color:#075E4C;margin:0 0 12px">New demo request</h2>
       <table style="border-collapse:collapse">
-        <tr><td style="padding:4px 12px 4px 0;color:#33423C">Full name</td><td style="padding:4px 0"><strong>${escapeHtml(fullName)}</strong></td></tr>
-        <tr><td style="padding:4px 12px 4px 0;color:#33423C">Phone</td><td style="padding:4px 0"><strong>${escapeHtml(phone)}</strong></td></tr>
-        <tr><td style="padding:4px 12px 4px 0;color:#33423C">Email</td><td style="padding:4px 0"><strong>${escapeHtml(email)}</strong></td></tr>
+        <tr><td style="padding:4px 12px 4px 0;color:#4C6473">Full name</td><td style="padding:4px 0"><strong>${escapeHtml(fullName)}</strong></td></tr>
+        <tr><td style="padding:4px 12px 4px 0;color:#4C6473">Phone</td><td style="padding:4px 0"><strong>${escapeHtml(phone)}</strong></td></tr>
+        <tr><td style="padding:4px 12px 4px 0;color:#4C6473">Email</td><td style="padding:4px 0"><strong>${escapeHtml(email)}</strong></td></tr>
       </table>
-      <p style="color:#33423C;font-size:13px;margin-top:16px">Sent from the RemedyEngine Book-a-demo form.</p>
+      <p style="color:#4C6473;font-size:13px;margin-top:16px">Sent from the RemedyEngine Book-a-demo form.</p>
     </div>`;
 
   try {
