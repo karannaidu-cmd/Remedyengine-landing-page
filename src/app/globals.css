@@ -150,6 +150,11 @@
   html {
     @apply font-sans;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
   h1,
   h2,
   h3 {
@@ -212,6 +217,18 @@
       rgba(114, 217, 78, 0.18),
       transparent 38%
     );
+  }
+
+  /* Full-bleed depth for the hero — a faint line grid so wide viewports read
+     as a designed canvas rather than empty margins either side of a centred
+     column. Fades out toward the bottom via a mask so it doesn't fight the
+     content below the fold. */
+  .bg-grid-lines {
+    background-image:
+      linear-gradient(rgba(11, 31, 51, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11, 31, 51, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(to bottom, black, transparent 92%);
   }
 }
 
@@ -304,6 +321,61 @@
     transform: translateY(0);
   }
 }
+/* Character-mask reveal — the finer-grained sibling of reWordIn, used for
+   the hero headline's per-letter cascade. Each character rises out of its
+   own overflow-hidden mask while sharpening from a slight blur, the same
+   "editorial agency" reveal pattern as render.com/lusion.co. */
+@keyframes reCharIn {
+  from {
+    opacity: 0;
+    transform: translateY(70%);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+/* Slow-spinning dashed energy ring around an engine-core hub — a second,
+   ambient layer of motion behind the radiating core pulses. */
+@keyframes reSpinSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Soft background glow blob behind an engine graphic — breathes slightly out
+   of phase with the image itself so the whole composition feels alive. */
+@keyframes reGlowPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.08);
+  }
+}
+
+/* Scroll-cue affordance at the foot of the hero — a glowing comet segment
+   travels the length of a thin guide line, top to bottom, fading in and out
+   at each end. Distances are in multiples of the segment's own height (not
+   the track's), so this keeps working if either size changes later. */
+@keyframes reScrollTrail {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  18%,
+  82% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(300%);
+    opacity: 0;
+  }
+}
 /* Radiating "data pulse" rings from the engine core — visualises energy
    moving outward from the core toward the connected channels/engines,
    independent of exact chip positions so it stays robust across breakpoints. */
@@ -333,5 +405,14 @@
   16% {
     opacity: 0.35;
     transform: scale(0.85);
+  }
+}
+
+/* Engine-ecosystem connector lines — dash offset flows from the hovered
+   engine toward each related engine, visualising "data moving between
+   modules" (same idea as the hero's core pulses, applied to the graph). */
+@keyframes reDashFlow {
+  to {
+    stroke-dashoffset: -16;
   }
 }

@@ -6,7 +6,7 @@ import "./globals.css";
 const sora = Sora({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["300", "400", "600", "700"],
 });
 
 const inter = Inter({

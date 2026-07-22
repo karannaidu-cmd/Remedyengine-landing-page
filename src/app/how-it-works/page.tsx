@@ -71,7 +71,7 @@ export default function HowItWorksPage() {
         </section>
 
         <section className="bg-paper-0">
-          <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
+          <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
             <JourneyScrolly />
           </div>
         </section>

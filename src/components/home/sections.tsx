@@ -7,6 +7,13 @@ import {
   Link2,
   Network,
   CalendarClock,
+  CalendarCheck,
+  Users,
+  Stethoscope,
+  ReceiptText,
+  FlaskConical,
+  Pill,
+  BellRing,
   Wallet,
   ClipboardList,
   HeartHandshake,
@@ -21,6 +28,10 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeader } from "@/components/section-header";
 import { EngineIcon } from "@/components/engine-icon";
 import { ClayCard } from "@/components/ui/clay-card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { CountUp } from "@/components/ui/count-up";
+import { AssemblingBar } from "@/components/ui/assembling-bar";
+import { Tilt } from "@/components/ui/tilt";
 import { Thread } from "@/components/sections/thread";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/ui/magnetic";
@@ -34,48 +45,84 @@ import { getEngine } from "@/lib/engines";
 import { solutions } from "@/lib/solutions";
 import { faqs } from "@/lib/faq";
 
-/* §2 — Omnichannel entry */
+/* §2 — Omnichannel entry ("subhero") */
 export function OmnichannelEntry() {
   return (
-    <section className="bg-paper-50">
-      <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <span className="font-data text-xs uppercase tracking-wide text-remedy-600">
-              Omnichannel entry
-            </span>
-            <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-ink-900 md:text-4xl">
-              Every doorway into your clinic. One intelligent booking engine.
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-ink-700 md:text-lg">
-              Whether a patient messages on WhatsApp, contacts you through
-              Instagram or Facebook, books through your website, walks in or
-              responds to an AI call, RemedyEngine brings every request into one
-              connected workflow.
-            </p>
-            <Button
-              className="mt-6 bg-remedy-600 text-white hover:bg-remedy-600/90"
-              render={<Link href="/engines#booking" />}
-              nativeButton={false}
-            >
-              Explore omnichannel booking
-            </Button>
-          </Reveal>
-          <Reveal delay={100}>
-            <figure className="overflow-hidden rounded-2xl border border-line-200 shadow-[0_4px_16px_rgba(11,31,51,0.08)]">
-              <Image
-                src="/images/omnichannel-converge.webp"
-                alt="Patient channels converging into one clinic booking engine"
-                width={1376}
-                height={768}
-                sizes="(max-width: 1024px) 100vw, 560px"
-                className="h-auto w-full"
-              />
-            </figure>
-            <figcaption className="mt-2 font-data text-[11px] uppercase tracking-wide text-ink-700">
-              Illustrative
-            </figcaption>
-          </Reveal>
+    <section id="omnichannel-entry" className="scroll-mt-24 bg-paper-50">
+      <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
+        {/* A distinct "panel" variant from the hero's full-bleed grid texture
+            — a soft mint-to-white gradient card with its own border and
+            ambient glow, so this section reads as its own designed moment
+            rather than a plain continuation of the page background. */}
+        <div className="relative overflow-hidden rounded-[2rem] border border-line-200 bg-gradient-to-br from-mint-100 via-paper-0 to-remedy-100/50 p-8 md:p-12">
+          <span aria-hidden className="pointer-events-none absolute inset-0 bg-ambient-highlight opacity-60" />
+          <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+            <Reveal>
+              <span className="font-data text-xs uppercase tracking-wide text-remedy-600">
+                Omnichannel entry
+              </span>
+              <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-ink-900 md:text-4xl">
+                Every doorway into your clinic. One intelligent booking engine.
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-ink-700 md:text-lg">
+                Whether a patient messages on WhatsApp, contacts you through
+                Instagram or Facebook, books through your website, walks in or
+                responds to an AI call, RemedyEngine brings every request into one
+                connected workflow.
+              </p>
+              <Button
+                className="mt-6 bg-remedy-600 text-white hover:bg-remedy-600/90"
+                render={<Link href="/engines#booking" />}
+                nativeButton={false}
+              >
+                Explore omnichannel booking
+              </Button>
+            </Reveal>
+            {/* Transparent-background render — sits directly on the panel
+                (no card-within-a-card) with a per-pixel drop-shadow, a slow
+                breathing scale, a spinning energy ring and lime pulses at the
+                booking-engine hub (~78%/48% in this crop), echoing the
+                hero's engine core. */}
+            <Reveal delay={100}>
+              <div className="relative mx-auto w-full max-w-sm">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 -z-10 motion-safe:animate-[reGlowPulse_6.5s_ease-in-out_infinite]"
+                  style={{
+                    background:
+                      "radial-gradient(closest-side, rgba(114,217,78,0.3), transparent 72%)",
+                  }}
+                />
+                <Tilt max={5}>
+                  <div className="relative motion-safe:animate-[reBreathe_8s_ease-in-out_infinite]">
+                    <Image
+                      src="/images/omnichannel-converge.webp"
+                      alt="Patient channels converging into one clinic booking engine"
+                      width={2525}
+                      height={2424}
+                      sizes="(max-width: 1024px) 70vw, 380px"
+                      className="h-auto w-full drop-shadow-[0_24px_40px_rgba(4,61,50,0.24)]"
+                    />
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-remedy-500/25 motion-safe:animate-[reSpinSlow_14s_linear_infinite]"
+                      style={{ left: "78%", top: "48%" }}
+                    />
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-lime-500/70 motion-safe:animate-[reCorePulse_3s_ease-out_infinite]"
+                      style={{ left: "78%", top: "48%" }}
+                    />
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-lime-500/70 motion-safe:animate-[reCorePulse_3s_ease-out_infinite]"
+                      style={{ left: "78%", top: "48%", animationDelay: "1.2s" }}
+                    />
+                  </div>
+                </Tilt>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>
@@ -87,7 +134,7 @@ export function AiBriefSection() {
   const engine = getEngine("ai-patient-history")!;
   return (
     <section className="bg-paper-50">
-      <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal delay={100} className="order-2 lg:order-1">
             <figure className="overflow-hidden rounded-2xl border border-line-200 shadow-[0_4px_16px_rgba(11,31,51,0.08)]">
@@ -119,12 +166,14 @@ export function AiBriefSection() {
             <div className="mt-6 grid grid-cols-2 gap-2">
               {engine.features.slice(0, 8).map((f, i) => (
                 <Reveal key={f} delay={(i % 4) * 50}>
-                  <span className="block rounded-lg border border-line-200 bg-paper-0 px-3 py-2 text-sm text-ink-900">
+                  <span className="flex items-center gap-1.5 rounded-lg border border-line-200 bg-paper-0 px-3 py-2 text-sm text-ink-900">
+                    <Check size={13} className="shrink-0 text-remedy-500" />
                     {f}
                   </span>
                 </Reveal>
               ))}
             </div>
+            <AssemblingBar className="mt-5 max-w-sm" />
             {engine.disclaimer && (
               <Reveal className="mt-6">
                 <div className="flex items-start gap-3 rounded-xl border border-line-200 bg-paper-0 p-4">
@@ -146,7 +195,7 @@ export function AiBriefSection() {
 export function ConnectedJourney() {
   return (
     <section className="bg-paper-0">
-      <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
         <SectionHeader
           eyebrow="The connected journey"
           title="One patient. One connected journey."
@@ -169,21 +218,26 @@ export function ConnectedJourney() {
 }
 
 /* §6 — Clinic command centre */
-const KPIS = [
-  "Today's appointments",
-  "Patients waiting",
-  "Doctor availability",
-  "Consultations completed",
-  "Revenue collected",
-  "Outstanding balances",
-  "Pending lab reports",
-  "Pharmacy stock alerts",
-  "Follow-up status",
+const KPI_TILES: {
+  icon: typeof CalendarCheck;
+  label: string;
+  value: number;
+  suffix?: string;
+}[] = [
+  { icon: CalendarCheck, label: "Today's appointments", value: 24 },
+  { icon: Users, label: "Patients waiting", value: 3 },
+  { icon: Stethoscope, label: "Doctors on duty", value: 4 },
+  { icon: ClipboardList, label: "Consultations completed", value: 18 },
+  { icon: Wallet, label: "Revenue collected", value: 68, suffix: "%" },
+  { icon: ReceiptText, label: "Outstanding balances", value: 6 },
+  { icon: FlaskConical, label: "Pending lab reports", value: 2 },
+  { icon: Pill, label: "Pharmacy stock alerts", value: 1 },
+  { icon: BellRing, label: "Follow-ups on schedule", value: 92, suffix: "%" },
 ];
 export function CommandCentre() {
   return (
     <section className="bg-paper-50">
-      <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <span className="font-data text-xs uppercase tracking-wide text-remedy-600">
@@ -192,16 +246,30 @@ export function CommandCentre() {
             <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-ink-900 md:text-4xl">
               See what&apos;s happening across your clinic — right now.
             </h2>
-            <ul className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {KPIS.map((k, i) => (
-                <Reveal key={k} delay={(i % 4) * 50}>
-                  <li className="flex items-center gap-2 rounded-lg border border-line-200 bg-paper-0 px-3 py-2 text-sm text-ink-900">
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-remedy-500" />
-                    {k}
-                  </li>
+            <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+              {KPI_TILES.map((k, i) => (
+                <Reveal key={k.label} delay={(i % 6) * 55}>
+                  <div className="group h-full overflow-hidden rounded-xl border border-line-200 bg-paper-0 p-3 transition-all duration-300 hover:border-remedy-500 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-[0_10px_28px_rgba(4,61,50,0.1)]">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-remedy-100 text-remedy-600 transition-colors duration-300 group-hover:bg-remedy-600 group-hover:text-white">
+                      <k.icon size={16} />
+                    </span>
+                    <p className="mt-2.5 font-serif text-xl font-semibold leading-none text-ink-900">
+                      <CountUp value={k.value} suffix={k.suffix ?? ""} />
+                    </p>
+                    <p className="mt-1 text-[11px] leading-snug text-ink-700">
+                      {k.label}
+                    </p>
+                  </div>
                 </Reveal>
               ))}
-            </ul>
+            </div>
+            <p className="mt-3 flex items-center gap-1.5 font-data text-[10px] uppercase tracking-wide text-ink-700">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-lime-500 motion-safe:animate-[rePulseRing_2.5s_ease-out_infinite]" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-lime-500" />
+              </span>
+              Illustrative live view
+            </p>
             <Button
               className="mt-6 bg-remedy-600 text-white hover:bg-remedy-600/90"
               render={<Link href="/engines#insights" />}
@@ -235,7 +303,7 @@ export function CommandCentre() {
 export function BuiltForEveryClinic() {
   return (
     <section className="bg-paper-0">
-      <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
         <SectionHeader
           eyebrow="Built for every clinic"
           title="Built for every clinic."
@@ -245,17 +313,22 @@ export function BuiltForEveryClinic() {
           {solutions.map((solution, i) => (
             <Reveal key={solution.slug} delay={(i % 3) * 70} className="h-full">
               <Link href={`/solutions#${solution.slug}`} className="block h-full">
-                <ClayCard interactive className="flex h-full flex-col p-6">
-                  <EngineIcon icon={solution.icon} treatment="clay" size="md" />
-                  <p className="mt-4 font-sans text-base font-semibold text-ink-900">
-                    {solution.name}
-                  </p>
-                  <p className="mt-1 flex-1 text-sm leading-relaxed text-ink-700">
-                    {solution.valueLine}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-1 font-data text-xs uppercase tracking-wide text-remedy-600">
-                    Explore <ArrowRight size={13} />
-                  </span>
+                <ClayCard interactive className="h-full p-0">
+                  <SpotlightCard
+                    className="flex h-full flex-col rounded-[inherit] p-6"
+                    glowClassName="[background:radial-gradient(280px_circle_at_var(--spot-x,50%)_var(--spot-y,50%),rgba(114,217,78,0.22),transparent_72%)]"
+                  >
+                    <EngineIcon icon={solution.icon} treatment="clay" size="md" />
+                    <p className="mt-4 font-sans text-base font-semibold text-ink-900">
+                      {solution.name}
+                    </p>
+                    <p className="mt-1 flex-1 text-sm leading-relaxed text-ink-700">
+                      {solution.valueLine}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1 font-data text-xs uppercase tracking-wide text-remedy-600">
+                      Explore <ArrowRight size={13} />
+                    </span>
+                  </SpotlightCard>
                 </ClayCard>
               </Link>
             </Reveal>
@@ -296,7 +369,7 @@ export function BeforeAfter() {
   ];
   return (
     <section className="bg-paper-0">
-      <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
         <SectionHeader
           eyebrow="The transformation"
           title="From scattered tools to one connected clinic."
@@ -374,7 +447,7 @@ export function OperationalBenefits() {
   return (
     <section className="relative overflow-hidden bg-paper-50">
       <span aria-hidden className="pointer-events-none absolute inset-0 bg-ambient-highlight opacity-70" />
-      <div className="relative mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
+      <div className="relative mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
         <SectionHeader
           eyebrow="Operational benefits"
           title="Less busywork. More connected care."
@@ -383,17 +456,12 @@ export function OperationalBenefits() {
         <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {BENEFITS.map((b, i) => (
             <Reveal key={b.text} delay={(i % 4) * 70} className="h-full">
-              <div className="group relative h-full overflow-hidden rounded-2xl border border-line-200 bg-paper-0 p-5 transition-all duration-300 hover:border-remedy-500 motion-safe:hover:-translate-y-1.5 motion-safe:hover:shadow-[0_20px_45px_rgba(4,61,50,0.14)]">
-                {/* light-sweep hover glare — decorative only, off entirely under reduced motion */}
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-y-0 left-0 w-1/3 -translate-x-[220%] skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 ease-out motion-safe:group-hover:translate-x-[420%]"
-                />
-                <span className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-remedy-100 text-remedy-600 transition-all duration-300 group-hover:bg-remedy-600 group-hover:text-white motion-safe:group-hover:-rotate-3 motion-safe:group-hover:scale-110">
+              <SpotlightCard className="group h-full rounded-2xl border border-line-200 bg-paper-0 p-5 transition-all duration-300 hover:border-remedy-500 motion-safe:hover:-translate-y-1.5 motion-safe:hover:shadow-[0_20px_45px_rgba(4,61,50,0.14)]">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-remedy-100 text-remedy-600 transition-all duration-300 group-hover:bg-remedy-600 group-hover:text-white motion-safe:group-hover:-rotate-3 motion-safe:group-hover:scale-110">
                   <b.icon size={20} />
                 </span>
-                <p className="relative mt-4 text-sm leading-relaxed text-ink-900">{b.text}</p>
-              </div>
+                <p className="mt-4 text-sm leading-relaxed text-ink-900">{b.text}</p>
+              </SpotlightCard>
             </Reveal>
           ))}
         </div>
@@ -406,7 +474,7 @@ export function OperationalBenefits() {
 export function FaqSection() {
   return (
     <section className="bg-paper-0">
-      <div className="mx-auto max-w-3xl px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-20">
         <SectionHeader
           eyebrow="Questions"
           title="Frequently asked questions"
@@ -471,7 +539,7 @@ const COMPARISONS = [
 export function WhyDifferent() {
   return (
     <section className="bg-paper-0">
-      <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
         <SectionHeader
           eyebrow="Why RemedyEngine"
           title="Built differently, on purpose."
@@ -480,13 +548,8 @@ export function WhyDifferent() {
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
           {COMPARISONS.map((c, i) => (
             <Reveal key={c.against} delay={i * 100} className="h-full">
-              <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line-200 bg-paper-50 p-6 transition-all duration-300 hover:border-remedy-500 motion-safe:hover:-translate-y-1.5 motion-safe:hover:shadow-[0_20px_45px_rgba(4,61,50,0.14)]">
-                {/* light-sweep hover glare — decorative only, off entirely under reduced motion */}
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-y-0 left-0 w-1/3 -translate-x-[220%] skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 ease-out motion-safe:group-hover:translate-x-[420%]"
-                />
-                <div className="relative flex items-center justify-between">
+              <SpotlightCard className="group flex h-full flex-col rounded-2xl border border-line-200 bg-paper-50 p-6 transition-all duration-300 hover:border-remedy-500 motion-safe:hover:-translate-y-1.5 motion-safe:hover:shadow-[0_20px_45px_rgba(4,61,50,0.14)]">
+                <div className="flex items-center justify-between">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-remedy-100 text-remedy-600 transition-all duration-300 group-hover:bg-remedy-600 group-hover:text-white motion-safe:group-hover:-rotate-3 motion-safe:group-hover:scale-110">
                     <c.icon size={20} />
                   </span>
@@ -494,14 +557,14 @@ export function WhyDifferent() {
                     vs
                   </span>
                 </div>
-                <p className="relative mt-5 font-data text-[11px] uppercase tracking-wide text-ink-700">
+                <p className="mt-5 font-data text-[11px] uppercase tracking-wide text-ink-700">
                   Compared with
                 </p>
-                <p className="relative mt-1 font-serif text-lg font-semibold text-ink-900">
+                <p className="mt-1 font-serif text-lg font-semibold text-ink-900">
                   {c.against}
                 </p>
-                <div className="relative mt-4 h-px w-full bg-line-200" />
-                <ul className="relative mt-4 space-y-2.5">
+                <div className="mt-4 h-px w-full bg-line-200" />
+                <ul className="mt-4 space-y-2.5">
                   {c.points.map((p, j) => (
                     <Reveal key={p} delay={150 + j * 70}>
                       <li className="flex items-start gap-2 text-sm leading-relaxed text-ink-700">
@@ -511,7 +574,7 @@ export function WhyDifferent() {
                     </Reveal>
                   ))}
                 </ul>
-              </div>
+              </SpotlightCard>
             </Reveal>
           ))}
         </div>
@@ -532,7 +595,7 @@ const TRIAL_POINTS = [
 export function FreeTrialSection() {
   return (
     <section className="bg-paper-50">
-      <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
         <Reveal className="relative overflow-hidden rounded-3xl clay-dark px-6 py-16 md:px-14 md:py-20">
           <span
             aria-hidden
