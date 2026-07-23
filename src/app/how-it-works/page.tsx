@@ -15,8 +15,16 @@ import {
 export const metadata: Metadata = pageMetadata({
   title: "How It Works",
   description:
-    "Follow one patient visit through RemedyEngine — booking, brief, consultation, prescription, lab, pharmacy, billing and follow-up, all connected.",
+    "Follow one patient visit through RemedyEngine: booking, brief, consultation, prescription, lab, pharmacy, billing and follow-up, all connected.",
   path: "/how-it-works",
+  keywords: [
+    "clinic patient journey software",
+    "how clinic automation works",
+    "WhatsApp patient booking workflow",
+    "connected clinic workflow software",
+    "AI doctor brief workflow",
+    "end-to-end clinic software",
+  ],
 });
 
 const jsonLd = {
@@ -47,7 +55,7 @@ export default function HowItWorksPage() {
         <PageHero
           eyebrow="How it works"
           title="One patient. Every engine. One connected journey."
-          sub="Follow a single visit as it flows through the whole clinic — from the first message to the follow-up — with every engine handing off to the next."
+          sub="Follow a single visit as it flows through the whole clinic, from the first message to the follow-up, with every engine handing off to the next."
           primary={{ label: "Book a demo", href: "/book-demo" }}
           secondary={{ label: "Explore the engines", href: "/engines" }}
         />
@@ -57,7 +65,7 @@ export default function HowItWorksPage() {
             <figure className="overflow-hidden rounded-2xl border border-line-200 shadow-[0_4px_16px_rgba(11,31,51,0.08)]">
               <Image
                 src="/images/patient-journey.webp"
-                alt="One patient's journey through RemedyEngine — communication, booking, consultation, laboratory, pharmacy, billing and follow-up as connected stages"
+                alt="One patient's journey through RemedyEngine: communication, booking, consultation, laboratory, pharmacy, billing and follow-up as connected stages"
                 width={1584}
                 height={672}
                 sizes="(max-width: 1200px) 100vw, 1120px"

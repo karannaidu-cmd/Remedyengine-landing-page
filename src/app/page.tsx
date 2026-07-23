@@ -2,6 +2,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { HomeHero } from "@/components/home/hero";
 import { EngineEcosystem } from "@/components/home/engine-ecosystem";
+import { MarketingCampaigns } from "@/components/home/marketing-campaigns";
 import {
   OmnichannelEntry,
   BeforeAfter,
@@ -115,6 +116,7 @@ export default function Home() {
         <OmnichannelEntry />
         <BeforeAfter />
         <EngineEcosystem />
+        <MarketingCampaigns />
         <AiBriefSection />
         <ConnectedJourney />
         <CommandCentre />

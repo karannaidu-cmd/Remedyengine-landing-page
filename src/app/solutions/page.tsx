@@ -20,8 +20,18 @@ import {
 export const metadata: Metadata = pageMetadata({
   title: "Solutions",
   description:
-    "From solo practices to growing chains, RemedyEngine adapts to how your clinic runs — solo doctors, multi-doctor clinics, specialty clinics, owners and chains.",
+    "From solo practices to growing chains, RemedyEngine adapts to how your clinic runs, for solo doctors, multi-doctor clinics, specialty clinics, owners and chains.",
   path: "/solutions",
+  keywords: [
+    "software for solo doctors",
+    "multi-doctor clinic software",
+    "specialty clinic software",
+    "clinic chain management software",
+    "clinic owner dashboard software",
+    "practice management software India",
+    "software for growing clinic chains",
+    "clinic automation for specialty practices",
+  ],
 });
 
 const jsonLd = {

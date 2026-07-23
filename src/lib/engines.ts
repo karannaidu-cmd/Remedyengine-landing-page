@@ -83,7 +83,7 @@ export const engines: Engine[] = [
     availability: "live",
     oneLiner: "Every patient channel, connected to one booking engine.",
     purpose:
-      "Turns any incoming request — from any channel — into a structured, de-duplicated appointment with the right doctor, type, and time.",
+      "Turns any incoming request, from any channel, into a structured, de-duplicated appointment with the right doctor, type, and time.",
     features: [
       "WhatsApp appointment booking",
       "Instagram enquiry capture",
@@ -121,7 +121,7 @@ export const engines: Engine[] = [
     availability: "live",
     oneLiner: "Conversations that move patients forward.",
     purpose:
-      "Handles the two-way WhatsApp conversation around every visit — answers, confirmations, instructions, and clean handover to staff when a human is needed.",
+      "Handles the two-way WhatsApp conversation around every visit: answers, confirmations, instructions, and clean handover to staff when a human is needed.",
     features: [
       "Automated WhatsApp responses",
       "Patient questions",
@@ -182,7 +182,7 @@ export const engines: Engine[] = [
     availability: "live",
     oneLiner: "Understand the patient's history before and during the consultation.",
     purpose:
-      "Analyses the patient's available medical history and organises the relevant parts into a structured summary the doctor can read at a glance — before and during the visit.",
+      "Analyses the patient's available medical history and organises the relevant parts into a structured summary the doctor can read at a glance, before and during the visit.",
     features: [
       "Patient demographics",
       "Blood group",
@@ -251,7 +251,7 @@ export const engines: Engine[] = [
     availability: "live",
     oneLiner: "The consultation, structured end to end.",
     purpose:
-      "The doctor's in-visit workflow — notes, diagnosis, treatment plan, tests, prescription, and follow-up in one flow.",
+      "The doctor's in-visit workflow: notes, diagnosis, treatment plan, tests, prescription, and follow-up in one flow.",
     features: [
       "Doctor consultation workflow",
       "Clinical notes",
@@ -311,7 +311,7 @@ export const engines: Engine[] = [
     availability: "live",
     oneLiner: "From test order to report, without lost paperwork.",
     purpose:
-      "Digital lab workflow from order to result — status tracking, uploads, doctor review, and lab billing.",
+      "Digital lab workflow from order to result: status tracking, uploads, doctor review, and lab billing.",
     features: [
       "Digital test orders",
       "Test-status tracking",
@@ -469,7 +469,7 @@ export const engines: Engine[] = [
     availability: "live",
     oneLiner: "The visits that would otherwise be forgotten.",
     purpose:
-      "Recall and reminders for reviews, medications, repeat tests, and missed appointments — over WhatsApp and AI calls.",
+      "Recall and reminders for reviews, medications, repeat tests, and missed appointments, over WhatsApp and AI calls.",
     features: [
       "Review-visit scheduling",
       "Medication follow-ups",
@@ -494,9 +494,9 @@ export const engines: Engine[] = [
     family: "growth",
     icon: BarChart3,
     availability: "live",
-    oneLiner: "See what's happening across your clinic — right now.",
+    oneLiner: "See what's happening across your clinic, right now.",
     purpose:
-      "The clinic command centre — today's operations, revenue, workload, alerts, and multi-location visibility.",
+      "The clinic command centre: today's operations, revenue, workload, alerts, and multi-location visibility.",
     features: [
       "Today's appointments",
       "Completed consultations",

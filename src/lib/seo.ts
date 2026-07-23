@@ -1,11 +1,11 @@
 export const siteConfig = {
   name: "RemedyEngine",
-  url: "https://www.remedyengin.com",
+  url: "https://www.remedyengine.com",
   title: "RemedyEngine | The AI Clinic Operating System",
   description:
-    "RemedyEngine is an AI-powered clinic operating system — connecting WhatsApp, Instagram, website, walk-in and AI-call booking with records, consultations, lab, pharmacy, billing and follow-ups on one connected platform.",
+    "RemedyEngine is an AI-powered clinic operating system that connects WhatsApp, Instagram, website, walk-in and AI-call booking with records, consultations, lab, pharmacy, billing and follow-ups on one connected platform.",
   logo: {
-    url: "/images/remedyengine-logo.png",
+    url: "/images/remedyengine-logo.webp",
     width: 1449,
     height: 281,
     alt: "RemedyEngine",
@@ -56,6 +56,7 @@ type PageMetaInput = {
   title?: string;
   description: string;
   path: string; // absolute path beginning with "/"
+  keywords?: string[];
   ogImage?: { url: string; width: number; height: number; alt: string };
   noindex?: boolean;
 };
@@ -64,12 +65,14 @@ export function pageMetadata({
   title,
   description,
   path,
+  keywords,
   ogImage = siteConfig.ogImage,
   noindex = false,
 }: PageMetaInput): Metadata {
   return {
     title,
     description,
+    keywords: keywords ?? [...siteConfig.keywords],
     alternates: { canonical: path },
     robots: noindex ? { index: false, follow: false } : undefined,
     openGraph: {

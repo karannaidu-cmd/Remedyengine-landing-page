@@ -60,7 +60,7 @@ export function HomeHero() {
     <section className="relative overflow-hidden bg-paper-50">
       <span aria-hidden className="pointer-events-none absolute inset-0 bg-grid-lines" />
       <span aria-hidden className="pointer-events-none absolute inset-0 bg-ambient-highlight" />
-      <div className="relative mx-auto max-w-[1200px] px-5 pt-16 pb-16 md:px-8 md:pt-24 md:pb-20">
+      <div className="relative mx-auto max-w-[1200px] px-5 pt-16 pb-4 md:px-8 md:pt-24 md:pb-6">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8">
           {/* Copy */}
           <div className="text-center lg:text-left">
@@ -97,8 +97,8 @@ export function HomeHero() {
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-700 lg:mx-0 motion-safe:animate-[reEnterUp_0.65s_cubic-bezier(0.22,1,0.36,1)_backwards] motion-safe:[animation-delay:920ms]">
               Every booking. Every consultation. Every prescription. Every report.
               RemedyEngine connects WhatsApp, Instagram, Facebook, your website,
-              walk-ins and AI calls to a suite of intelligent clinic engines — one
-              connected operating system.
+              walk-ins and AI calls to a suite of intelligent clinic engines. It&apos;s
+              one connected operating system.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start motion-safe:animate-[reEnterUp_0.65s_cubic-bezier(0.22,1,0.36,1)_backwards] motion-safe:[animation-delay:1000ms]">
               <Magnetic className="w-full sm:w-auto">
@@ -232,7 +232,7 @@ export function HomeHero() {
             section. A glowing comet segment travels the length of a thin
             guide line rather than a boxed/circular badge, a quieter, more
             linear nod to "there's more below". */}
-        <div className="mt-12 flex justify-center motion-safe:animate-[reEnterUp_0.6s_ease-out_backwards] motion-safe:[animation-delay:1450ms]">
+        <div className="mt-10 flex justify-center motion-safe:animate-[reEnterUp_0.6s_ease-out_backwards] motion-safe:[animation-delay:1450ms]">
           <a
             href="#omnichannel-entry"
             className="group flex flex-col items-center gap-4"

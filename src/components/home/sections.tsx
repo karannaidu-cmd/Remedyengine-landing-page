@@ -49,7 +49,7 @@ import { faqs } from "@/lib/faq";
 export function OmnichannelEntry() {
   return (
     <section id="omnichannel-entry" className="scroll-mt-24 bg-paper-50">
-      <div className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
+      <div className="mx-auto max-w-[1200px] px-5 pt-6 pb-14 md:px-8 md:pt-8 md:pb-20">
         {/* A distinct "panel" variant from the hero's full-bleed grid texture
             — a soft mint-to-white gradient card with its own border and
             ambient glow, so this section reads as its own designed moment
@@ -199,7 +199,7 @@ export function ConnectedJourney() {
         <SectionHeader
           eyebrow="The connected journey"
           title="One patient. One connected journey."
-          sub="Follow a single visit as it flows through every engine — booked, briefed, prescribed and delivered, without a single phone call."
+          sub="Follow a single visit as it flows through every engine: booked, briefed, prescribed and delivered, without a single phone call."
         />
         <div className="mx-auto mt-14 max-w-4xl">
           <Thread />
@@ -244,7 +244,7 @@ export function CommandCentre() {
               Clinic command centre
             </span>
             <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-ink-900 md:text-4xl">
-              See what&apos;s happening across your clinic — right now.
+              See what&apos;s happening across your clinic, right now.
             </h2>
             <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
               {KPI_TILES.map((k, i) => (
@@ -529,7 +529,7 @@ const COMPARISONS = [
     points: [
       "Built for clinics and growing practices, not enterprise hospitals",
       "WhatsApp-first communication patients already use",
-      "Modular engines — adopt what you need, when you need it",
+      "Modular engines, so you adopt what you need, when you need it",
       "Faster onboarding, modern day-to-day experience",
       "Scales from a single doctor to multiple locations",
     ],
@@ -586,7 +586,7 @@ export function WhyDifferent() {
 /* 14-day free trial — dedicated, animated, dark "engine-room" treatment so it
    reads as a genuine offer band, distinct from the surrounding light sections. */
 const TRIAL_POINTS = [
-  "Full platform access — all 16 engines, not a limited demo mode",
+  "Full platform access, all 16 engines included, not a limited demo mode",
   "No credit card required to start",
   "Your team is onboarded, not left to figure it out alone",
   "Cancel anytime before the trial ends",
@@ -623,8 +623,8 @@ export function FreeTrialSection() {
               Try the full engine, free for 14 days.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-paper-50/80">
-              Run your real clinic on RemedyEngine for two weeks — every engine
-              switched on — before you decide anything.
+              Run your real clinic on RemedyEngine for two weeks, every engine
+              switched on, before you decide anything.
             </p>
 
             <ul className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-3 text-left sm:grid-cols-2">

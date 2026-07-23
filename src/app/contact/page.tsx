@@ -14,8 +14,14 @@ import { contact, mailtoHref, telHref, whatsappHref } from "@/lib/contact";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
-  description: `Contact RemedyEngine — email ${contact.email} or message ${contact.phoneDisplay} on WhatsApp.`,
+  description: `Contact RemedyEngine by emailing ${contact.email} or messaging ${contact.phoneDisplay} on WhatsApp.`,
   path: "/contact",
+  keywords: [
+    "contact RemedyEngine",
+    "clinic software support",
+    "RemedyEngine customer support",
+    "clinic automation help",
+  ],
 });
 
 const METHODS = [

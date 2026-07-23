@@ -16,6 +16,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { EngineIcon } from "@/components/engine-icon";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { PageHero } from "@/components/site/page-hero";
 import { CTABand } from "@/components/site/cta-band";
 import { cn } from "@/lib/utils";
@@ -30,8 +31,20 @@ import {
 export const metadata: Metadata = pageMetadata({
   title: "Engine Ecosystem",
   description:
-    "Explore RemedyEngine's 16 connected clinic engines — booking, conversation, AI patient history, records, consultation, prescriptions, lab, pharmacy, billing, insights and more.",
+    "Explore RemedyEngine's 16 connected clinic engines, including booking, conversation, AI patient history, records, consultation, prescriptions, lab, pharmacy, billing, insights and more.",
   path: "/engines",
+  keywords: [
+    "clinic booking engine",
+    "AI patient history software",
+    "digital patient records software",
+    "clinic prescription software",
+    "lab and pharmacy management software",
+    "clinic billing software",
+    "WhatsApp appointment booking system",
+    "AI calling for clinics",
+    "clinic follow-up automation",
+    "clinic insights dashboard",
+  ],
 });
 
 const jsonLd = {
@@ -74,101 +87,118 @@ const INSIGHTS_CHIPS = ["Appointments", "Revenue", "Lab reports", "Follow-ups"];
 function EngineArticle({ engine, tone = "light" }: { engine: Engine; tone?: "light" | "dark" }) {
   const dark = tone === "dark";
   return (
-    <article
-      id={engine.slug}
-      className={cn(
-        "scroll-mt-24 rounded-2xl p-6 md:p-8",
-        dark ? "border border-paper-0/10 bg-paper-0/[0.06]" : "border border-line-200 bg-paper-0"
-      )}
-    >
-      <div className="flex items-start gap-4">
-        <EngineIcon icon={engine.icon} treatment="clay" size="md" />
-        <div className="min-w-0">
-          <h3 className={cn("font-serif text-xl font-semibold", dark ? "text-paper-50" : "text-ink-900")}>
-            {engine.name}
-          </h3>
-          <p className={cn("mt-1 text-sm leading-relaxed", dark ? "text-paper-50/70" : "text-ink-700")}>
-            {engine.oneLiner}
-          </p>
+    <article id={engine.slug} className="scroll-mt-24">
+      <SpotlightCard
+        glowClassName={dark ? "[background:radial-gradient(260px_circle_at_var(--spot-x,50%)_var(--spot-y,50%),rgba(114,217,78,0.14),transparent_72%)]" : undefined}
+        className={cn(
+          "group rounded-2xl p-6 transition-all duration-300 md:p-8",
+          dark
+            ? "border border-paper-0/10 bg-paper-0/[0.06] hover:border-lime-500/30"
+            : "border border-line-200 bg-paper-0 hover:-translate-y-1 hover:border-remedy-500/50 hover:shadow-[0_16px_40px_rgba(11,31,51,0.1)]"
+        )}
+      >
+        <div className="flex items-start gap-4">
+          <span className="relative shrink-0">
+            <span
+              aria-hidden
+              className="absolute inset-0 rounded-[inherit] border-2 border-lime-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:motion-safe:animate-[rePulseRing_1.8s_ease-out_infinite]"
+            />
+            <EngineIcon icon={engine.icon} treatment="clay" size="md" />
+          </span>
+          <div className="min-w-0">
+            <h3 className={cn("font-serif text-xl font-semibold", dark ? "text-paper-50" : "text-ink-900")}>
+              {engine.name}
+            </h3>
+            <p className={cn("mt-1 text-sm leading-relaxed", dark ? "text-paper-50/70" : "text-ink-700")}>
+              {engine.oneLiner}
+            </p>
+          </div>
         </div>
-      </div>
 
-      <p className={cn("mt-5 max-w-3xl text-sm leading-relaxed", dark ? "text-paper-50/90" : "text-ink-900")}>
-        {engine.purpose}
-      </p>
+        <p className={cn("mt-5 max-w-3xl text-sm leading-relaxed", dark ? "text-paper-50/90" : "text-ink-900")}>
+          {engine.purpose}
+        </p>
 
-      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-[1.4fr_1fr]">
-        <div>
-          <p className={cn("font-data text-[11px] uppercase tracking-wide", dark ? "text-paper-50/60" : "text-ink-700")}>
-            What it does
-          </p>
-          <ul className="mt-3 grid grid-cols-1 gap-x-6 gap-y-1.5 sm:grid-cols-2">
-            {engine.features.map((f) => (
-              <li key={f} className={cn("flex items-start gap-2 text-sm", dark ? "text-paper-50/80" : "text-ink-700")}>
-                <Check size={14} className={cn("mt-0.5 shrink-0", dark ? "text-lime-500" : "text-remedy-600")} />
-                {f}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p className={cn("font-data text-[11px] uppercase tracking-wide", dark ? "text-paper-50/60" : "text-ink-700")}>
-            Why it matters
-          </p>
-          <ul className="mt-3 space-y-2">
-            {engine.benefits.map((b) => (
-              <li
-                key={b}
-                className={cn("rounded-lg px-3 py-2 text-sm", dark ? "bg-paper-0/10 text-paper-50" : "bg-paper-50 text-ink-900")}
-              >
-                {b}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {engine.workflow && (
-        <div className="mt-6">
-          <p className={cn("font-data text-[11px] uppercase tracking-wide", dark ? "text-paper-50/60" : "text-ink-700")}>
-            Connected workflow
-          </p>
-          <ol className="mt-3 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-1.5 sm:gap-y-3">
-            {engine.workflow.map((step, i) => (
-              <li key={step} className="flex items-center gap-2">
-                <span
+        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-[1.4fr_1fr]">
+          <div>
+            <p className={cn("font-data text-[11px] uppercase tracking-wide", dark ? "text-paper-50/60" : "text-ink-700")}>
+              What it does
+            </p>
+            <ul className="mt-3 grid grid-cols-1 gap-x-6 gap-y-1.5 sm:grid-cols-2">
+              {engine.features.map((f) => (
+                <li key={f} className={cn("flex items-start gap-2 text-sm", dark ? "text-paper-50/80" : "text-ink-700")}>
+                  <Check size={14} className={cn("mt-0.5 shrink-0", dark ? "text-lime-500" : "text-remedy-600")} />
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className={cn("font-data text-[11px] uppercase tracking-wide", dark ? "text-paper-50/60" : "text-ink-700")}>
+              Why it matters
+            </p>
+            <ul className="mt-3 space-y-2">
+              {engine.benefits.map((b) => (
+                <li
+                  key={b}
                   className={cn(
-                    "flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-data text-[10px]",
-                    dark ? "bg-lime-500 text-remedy-900" : "bg-remedy-600 text-white"
+                    "flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm",
+                    dark ? "bg-paper-0/10 text-paper-50" : "bg-paper-50 text-ink-900"
                   )}
                 >
-                  {i + 1}
-                </span>
-                <span className={cn("text-xs leading-tight", dark ? "text-paper-50/80" : "text-ink-700")}>
-                  {step}
-                </span>
-                {i < engine.workflow!.length - 1 && (
-                  <ArrowRight size={12} className={cn("hidden shrink-0 sm:block", dark ? "text-paper-50/25" : "text-line-200")} />
-                )}
-              </li>
-            ))}
-          </ol>
+                  <span className="relative flex h-1.5 w-1.5 shrink-0">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-lime-500 motion-safe:animate-[rePulseRing_2.5s_ease-out_infinite]" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-lime-500" />
+                  </span>
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      )}
 
-      {engine.disclaimer && (
-        <div
-          className={cn(
-            "mt-6 flex items-start gap-3 rounded-xl p-4",
-            dark ? "bg-paper-0/10" : "border border-line-200 bg-paper-50"
-          )}
-        >
-          <Info size={16} className={cn("mt-0.5 shrink-0", dark ? "text-lime-500" : "text-remedy-600")} />
-          <p className={cn("text-xs leading-relaxed", dark ? "text-paper-50/80" : "text-ink-700")}>
-            {engine.disclaimer}
-          </p>
-        </div>
-      )}
+        {engine.workflow && (
+          <div className="mt-6">
+            <p className={cn("font-data text-[11px] uppercase tracking-wide", dark ? "text-paper-50/60" : "text-ink-700")}>
+              Connected workflow
+            </p>
+            <ol className="mt-3 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-1.5 sm:gap-y-3">
+              {engine.workflow.map((step, i) => (
+                <li key={step} className="flex items-center gap-2">
+                  <span
+                    className={cn(
+                      "flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-data text-[10px] transition-transform duration-300 hover:scale-110",
+                      dark ? "bg-lime-500 text-remedy-900" : "bg-remedy-600 text-white"
+                    )}
+                  >
+                    {i + 1}
+                  </span>
+                  <span className={cn("text-xs leading-tight", dark ? "text-paper-50/80" : "text-ink-700")}>
+                    {step}
+                  </span>
+                  {i < engine.workflow!.length - 1 && (
+                    <ArrowRight size={12} className={cn("hidden shrink-0 sm:block", dark ? "text-paper-50/25" : "text-line-200")} />
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+
+        {engine.disclaimer && (
+          <div
+            className={cn(
+              "mt-6 flex items-start gap-3 rounded-xl p-4",
+              dark ? "bg-paper-0/10" : "border border-line-200 bg-paper-50"
+            )}
+          >
+            <Info size={16} className={cn("mt-0.5 shrink-0", dark ? "text-lime-500" : "text-remedy-600")} />
+            <p className={cn("text-xs leading-relaxed", dark ? "text-paper-50/80" : "text-ink-700")}>
+              {engine.disclaimer}
+            </p>
+          </div>
+        )}
+      </SpotlightCard>
     </article>
   );
 }
@@ -192,7 +222,7 @@ export default function EnginesPage() {
         <PageHero
           eyebrow="The engine ecosystem"
           title="Dedicated engines. One connected clinic."
-          sub="Sixteen engines across access, clinical intelligence, operations and growth — working as one system, not five tools stitched together."
+          sub="Sixteen engines across access, clinical intelligence, operations and growth, working as one system, not five tools stitched together."
           primary={{ label: "Book a demo", href: "/book-demo" }}
         />
 
@@ -320,7 +350,7 @@ export default function EnginesPage() {
                 </h2>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-700">
                   Laboratory and pharmacy work as connected hand-offs, not
-                  separate notebooks — every step below traces straight
+                  separate notebooks. Every step below traces straight
                   through to billing.
                 </p>
               </Reveal>

@@ -3,10 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Menu, MessageCircle, LogIn } from "lucide-react";
+import { ChevronDown, Menu, Sparkles } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
-import { Button } from "@/components/ui/button";
-import { Magnetic } from "@/components/ui/magnetic";
+import { SparkleCTA } from "@/components/ui/sparkle-cta";
 import {
   Accordion,
   AccordionContent,
@@ -23,7 +22,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { whatsappHref, appLoginUrl } from "@/lib/contact";
 import {
   engineFamilies,
   enginesByFamily,
@@ -127,36 +125,7 @@ export function Nav() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Message us on WhatsApp"
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-ink-700 hover:bg-remedy-100 hover:text-remedy-600"
-          >
-            <MessageCircle size={20} />
-          </a>
-          <Magnetic strength={8}>
-            <Button
-              variant="outline"
-              render={<a href={appLoginUrl} />}
-              nativeButton={false}
-              className="border-remedy-600 text-remedy-600 transition-colors hover:bg-remedy-100 hover:text-remedy-600"
-            >
-              <LogIn
-                size={16}
-                className="transition-transform duration-300 motion-safe:group-hover/button:translate-x-0.5"
-              />
-              Log in
-            </Button>
-          </Magnetic>
-          <Button
-            render={<Link href="/book-demo" />}
-            nativeButton={false}
-            className="bg-remedy-600 text-white hover:bg-remedy-600/90"
-          >
-            Book a demo
-          </Button>
+          <SparkleCTA />
         </div>
 
         {/* Mobile trigger */}
@@ -382,28 +351,29 @@ function MobileMenu() {
             ))}
           </nav>
 
-          <div className="mt-5 space-y-2 border-t border-line-200 pt-5">
+          <div className="relative mt-5 border-t border-line-200 pt-5">
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -inset-x-1 top-6 bottom-0 -z-10 rounded-full blur-md motion-safe:animate-[reCtaHalo_2.8s_ease-in-out_infinite]"
+              style={{
+                background: "radial-gradient(closest-side, rgba(114,217,78,0.4), transparent 72%)",
+              }}
+            />
             <SheetClose
               render={<Link href="/book-demo" />}
               nativeButton={false}
-              className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-remedy-600 px-4 text-sm font-medium text-white hover:bg-remedy-600/90"
+              className="relative inline-flex h-11 w-full items-center justify-center gap-1.5 overflow-hidden rounded-lg bg-remedy-600 px-4 text-sm font-medium text-white hover:bg-remedy-600/90 motion-safe:animate-[reCtaGlow_2.8s_ease-in-out_infinite]"
             >
+              <Sparkles
+                size={15}
+                className="text-lime-300 motion-safe:animate-[reSparkleTwinkle_2.2s_ease-in-out_infinite]"
+              />
               Book a demo
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 motion-safe:animate-[reShimmerSweep_2.6s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-lime-300/60 to-transparent"
+              />
             </SheetClose>
-            <a
-              href={appLoginUrl}
-              className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-remedy-600 px-4 text-sm font-medium text-remedy-600 hover:bg-remedy-100"
-            >
-              <LogIn size={18} /> Log in
-            </a>
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-line-200 px-4 text-sm font-medium text-ink-900 hover:bg-remedy-100"
-            >
-              <MessageCircle size={18} /> WhatsApp
-            </a>
           </div>
         </div>
       </SheetContent>

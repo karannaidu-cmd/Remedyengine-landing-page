@@ -59,7 +59,7 @@ export function CTABand({
               </Magnetic>
             </div>
             <p className="mt-6 font-data text-xs uppercase tracking-wide text-paper-50/70">
-              www.remedyengin.com · {contact.email} · {contact.phoneDisplay}
+              www.remedyengine.com · {contact.email} · {contact.phoneDisplay}
             </p>
           </div>
         </Reveal>

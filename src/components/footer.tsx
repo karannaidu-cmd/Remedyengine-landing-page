@@ -59,7 +59,7 @@ export function Footer() {
               <BrandLogo imageClassName="h-10" sizes="206px" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-700">
-              The engine that runs your entire clinic — WhatsApp, records,
+              The engine that runs your entire clinic: WhatsApp, records,
               consultations, pharmacy, lab, billing and follow-ups on one
               connected operating system.
             </p>
@@ -111,7 +111,7 @@ export function Footer() {
 
         <div className="mt-6 flex flex-col items-start justify-between gap-4 border-t border-line-200 pt-6 md:flex-row md:items-center">
           <p className="font-data text-xs text-ink-700">
-            © 2026 RemedyEngine. All rights reserved. · www.remedyengin.com
+            © 2026 RemedyEngine. All rights reserved. · www.remedyengine.com
           </p>
           <p className="max-w-lg text-xs leading-relaxed text-ink-700">
             AI-generated summaries support healthcare professionals and do not

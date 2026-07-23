@@ -20,6 +20,13 @@ export const metadata: Metadata = pageMetadata({
   title: "Book a 20-minute demo",
   description: demoDescription,
   path: "/book-demo",
+  keywords: [
+    "book clinic software demo",
+    "RemedyEngine demo",
+    "clinic automation demo",
+    "WhatsApp clinic software demo request",
+    "schedule a clinic software walkthrough",
+  ],
 });
 
 const jsonLd = {
@@ -38,10 +45,10 @@ const jsonLd = {
 };
 
 const WHAT_YOU_SEE = [
-  "Every patient channel — WhatsApp, Instagram, Facebook, website, walk-in, AI calling — landing in one booking engine",
+  "Every patient channel (WhatsApp, Instagram, Facebook, website, walk-in, AI calling) landing in one booking engine",
   "The AI Patient History Brief and consultation workflow, doctor's-eye view",
   "Prescriptions, lab and pharmacy handing off to each other automatically",
-  "The clinic command centre — appointments, revenue, and alerts in real time",
+  "The clinic command centre, with appointments, revenue, and alerts in real time",
 ];
 
 export default function BookDemoPage() {
@@ -65,7 +72,7 @@ export default function BookDemoPage() {
               </h1>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-ink-700">
                 In 20 minutes, watch a patient enquiry become a booked,
-                briefed, prescribed, and followed-up visit — mapped to your
+                briefed, prescribed, and followed-up visit, mapped to your
                 clinic&apos;s own workflow across every connected engine.
               </p>
 

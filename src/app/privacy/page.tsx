@@ -22,7 +22,7 @@ const SECTIONS = [
   {
     heading: "Information we collect",
     body: [
-      "We collect information you provide directly — such as your name, phone number, and email when you request a demo or contact us — and standard technical information (such as device and usage data) needed to operate and secure the website.",
+      "We collect information you provide directly, such as your name, phone number, and email when you request a demo or contact us, along with standard technical information (such as device and usage data) needed to operate and secure the website.",
       "Patient information processed within the RemedyEngine platform is handled on behalf of the clinics that use it, under their instructions.",
     ],
   },

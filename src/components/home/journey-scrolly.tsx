@@ -48,12 +48,12 @@ export function JourneyScrolly() {
       {/* Sticky visual (lg+) */}
       <div className="hidden lg:block">
         <div className="lg:sticky lg:top-28">
-          <div className="clay-dark rounded-3xl p-10">
+          <div className="clay-dark min-h-[420px] rounded-3xl p-12">
             <span className="font-data text-xs uppercase tracking-wide text-lime-500">
               Step {String(active + 1).padStart(2, "0")} / {JOURNEY.length}
             </span>
             {activeEngine && (
-              <div className="mt-6 flex items-center gap-4">
+              <div className="mt-8 flex items-center gap-4">
                 <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-paper-0/10 text-paper-50">
                   <activeEngine.icon size={30} strokeWidth={2} />
                 </span>
@@ -62,14 +62,14 @@ export function JourneyScrolly() {
                 </span>
               </div>
             )}
-            <p className="mt-6 font-serif text-2xl font-semibold leading-snug text-paper-50">
+            <p className="mt-8 font-serif text-3xl font-semibold leading-snug text-paper-50">
               {JOURNEY[active].stage}
             </p>
-            <p className="mt-3 leading-relaxed text-paper-50/80">
+            <p className="mt-4 text-base leading-relaxed text-paper-50/80">
               {JOURNEY[active].detail}
             </p>
             {/* progress rail */}
-            <div className="mt-8 flex gap-1.5">
+            <div className="mt-10 flex gap-1.5">
               {JOURNEY.map((_, i) => (
                 <span
                   key={i}

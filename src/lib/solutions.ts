@@ -33,11 +33,11 @@ export const solutions: Solution[] = [
     icon: Stethoscope,
     headline: "Run a solo practice without a back office.",
     valueLine:
-      "Walk into every appointment fully briefed — and finish your notes in seconds.",
+      "Walk into every appointment fully briefed, and finish your notes in seconds.",
     intro:
       "As a solo doctor you are the practice. RemedyEngine handles booking, patient context, and follow-ups so your time goes to patients, not paperwork.",
     points: [
-      "AI books, reminds, and answers patients on WhatsApp — no front desk required",
+      "AI books, reminds, and answers patients on WhatsApp, with no front desk required",
       "An organised patient-history brief before every consultation",
       "Digital prescriptions delivered instantly, with follow-ups scheduled automatically",
     ],
@@ -95,7 +95,7 @@ export const solutions: Solution[] = [
     icon: BarChart3,
     headline: "Grow revenue and cut admin overhead.",
     valueLine:
-      "Grow revenue and cut admin overhead — without hiring more front-desk staff.",
+      "Grow revenue and cut admin overhead without hiring more front-desk staff.",
     intro:
       "As an owner you need visibility and control. RemedyEngine shows what's happening across the clinic and keeps revenue and follow-ups from leaking.",
     points: [

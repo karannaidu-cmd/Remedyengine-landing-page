@@ -74,7 +74,7 @@ Email:     ${email}`;
       from: `RemedyEngine Demo Requests <${SMTP_USER}>`,
       to,
       replyTo: email,
-      subject: `New demo request — ${fullName}`,
+      subject: `New demo request from ${fullName}`,
       text,
       html,
     });

@@ -7,11 +7,11 @@ export type Faq = { q: string; a: string };
 export const faqs: Faq[] = [
   {
     q: "What is RemedyEngine?",
-    a: "RemedyEngine is an AI-powered clinic operating system. It connects every patient channel and every clinic department — booking, records, consultations, prescriptions, laboratory, pharmacy, billing, follow-ups and more — through a suite of connected engines on one platform.",
+    a: "RemedyEngine is an AI-powered clinic operating system. It connects every patient channel and every clinic department, including booking, records, consultations, prescriptions, laboratory, pharmacy, billing and follow-ups, through a suite of connected engines on one platform.",
   },
   {
     q: "Do patients need to download an app?",
-    a: "No. Patients reach your clinic through the channels they already use — WhatsApp, Instagram, Facebook, your website, walk-in or an AI call — and everything flows into one booking engine. There is no patient app to install.",
+    a: "No. Patients reach your clinic through the channels they already use: WhatsApp, Instagram, Facebook, your website, walk-in or an AI call. Everything flows into one booking engine, and there is no patient app to install.",
   },
   {
     q: "Which channels can patients book through?",
@@ -19,11 +19,11 @@ export const faqs: Faq[] = [
   },
   {
     q: "Does the AI make clinical decisions?",
-    a: "No. The AI Patient History Brief organises available patient information to support healthcare professionals. It does not replace independent clinical assessment, diagnosis or professional medical judgment — clinicians make all clinical decisions.",
+    a: "No. The AI Patient History Brief organises available patient information to support healthcare professionals. It does not replace independent clinical assessment, diagnosis or professional medical judgment. Clinicians make all clinical decisions.",
   },
   {
     q: "Does RemedyEngine work for multiple doctors and locations?",
-    a: "Yes. It supports multi-doctor availability, a shared patient record, role-based access, and multi-location visibility — so growing clinics and chains can standardise how every branch runs.",
+    a: "Yes. It supports multi-doctor availability, a shared patient record, role-based access, and multi-location visibility, so growing clinics and chains can standardise how every branch runs.",
   },
   {
     q: "How do we get started?",

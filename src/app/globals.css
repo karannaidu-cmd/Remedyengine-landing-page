@@ -308,6 +308,69 @@
     transform: translateY(0) scale(1);
   }
 }
+/* "Book a demo" CTA — a periodic light sweep across the button face... */
+@keyframes reShimmerSweep {
+  0% {
+    transform: translateX(-130%) skewX(-12deg);
+  }
+  18% {
+    transform: translateX(130%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(130%) skewX(-12deg);
+  }
+}
+/* ...paired with a soft glow breathing around it... */
+@keyframes reCtaGlow {
+  0%,
+  100% {
+    box-shadow: 0 3px 10px rgba(114, 217, 78, 0.22);
+  }
+  50% {
+    box-shadow: 0 5px 18px rgba(114, 217, 78, 0.4);
+  }
+}
+/* A soft blurred green halo sitting behind the CTA — a quiet "alive" cue,
+   deliberately faint so it reads as ambient rather than a distraction. */
+@keyframes reCtaHalo {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.05);
+  }
+}
+/* ...and a small twinkling sparkle glyph riding alongside the label. */
+@keyframes reSparkleTwinkle {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: scale(0.85) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(10deg);
+  }
+}
+
+/* Typing-indicator dot — three of these, staggered, inside a chat bubble
+   standing in for an AI reply that hasn't "arrived" yet. */
+@keyframes reTypingDot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
 /* Word-mask reveal for the hero H1 — each word's outer span is the
    overflow-hidden "mask"; the inner span (this keyframe) slides up from
    below the mask into place. */

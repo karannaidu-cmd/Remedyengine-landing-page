@@ -66,7 +66,7 @@ export function BookDemoForm() {
           Request received
         </h2>
         <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-ink-700">
-          Thanks, {form.fullName.trim().split(" ")[0]} — our team will reach out
+          Thanks, {form.fullName.trim().split(" ")[0]}. Our team will reach out
           at{" "}
           <span className="font-medium text-ink-900">{form.email.trim()}</span>{" "}
           to schedule your 20-minute demo.
@@ -85,7 +85,7 @@ export function BookDemoForm() {
         Tell us where to reach you
       </h2>
       <p className="mt-1 text-sm text-ink-700">
-        Three fields — we&apos;ll do the rest.
+        Three fields. We&apos;ll do the rest.
       </p>
 
       <div className="mt-6 space-y-4">
